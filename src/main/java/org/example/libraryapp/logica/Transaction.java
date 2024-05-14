@@ -9,7 +9,6 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer transaction_id;
-
     private Double amount;
     private Date t_date;
     private String type;

@@ -1,10 +1,11 @@
 package org.example.libraryapp.persistencia;
 
-import org.example.libraryapp.Views.availableBooks;
-import org.example.libraryapp.logica.Author;
+import org.example.libraryapp.Views.*;
+import org.example.libraryapp.logica.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.StoredProcedureQuery;
 import java.util.List;
 
 public class ControladoraPersistencia {
@@ -26,8 +27,63 @@ public class ControladoraPersistencia {
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
+
+    public void llamarProcedimientoRegistrarMiembro(String memberName, String address, String email, String phone) {
+        EntityManager em = getEntityManager();
+        StoredProcedureQuery storedProcedure = em.createStoredProcedureQuery("RegisterMember");
+
+        storedProcedure.setParameter("member_name", memberName);
+        storedProcedure.setParameter("address", address);
+        storedProcedure.setParameter("email", email);
+        storedProcedure.setParameter("phone", phone);
+
+        storedProcedure.execute();
+        em.close();
+    }
+
+    public void llamarProcedimientoCheckInBook(Integer memberId, Integer bookId) {
+        EntityManager em = getEntityManager();
+        StoredProcedureQuery storedProcedure = em.createStoredProcedureQuery("CheckInBook");
+
+        storedProcedure.setParameter("member_id", memberId);
+        storedProcedure.setParameter("book_id", bookId);
+
+        storedProcedure.execute();
+        em.close();
+    }
+
+
+    public void llamarProcedimientoReturnandUpdateLoan(Integer loanId) {
+        EntityManager em = getEntityManager();
+        StoredProcedureQuery storedProcedure = em.createStoredProcedureQuery("ReturnAndUpdateStatusBook");
+
+        storedProcedure.setParameter("loan_id", loanId);
+
+        storedProcedure.execute();
+        em.close();
+    }
+
+    public void guardarMiembro(Member member){
+        memberController.createMember(member);
+    }
+
+    public void guardarLibro(Book book){
+        bookController.createBook(book);
+    }
+
+    public void guardarPrestamo(Loan loan){
+        loanController.createLoan(loan);
+    }
+
+    public void guardarNotificacion(Notification notification){
+        notificationController.createNotification(notification);
+    }
+
+    public void guardarTransaccion(Transaction transaction){
+        transactionController.createTransaction(transaction);
+    }
     //Creamos en la base de datos un autor
-    public void crearAutor(Author author){
+    public void guardarAutor(Author author){
         authorController.createAuthor(author);
     }
 
@@ -62,9 +118,31 @@ public class ControladoraPersistencia {
         return resultados;
     }
 
+    public List<books_with_copy_status> obtenerLibrosConEstadoCopias() {
+        EntityManager em = getEntityManager();
+        List<books_with_copy_status> resultados = em.createQuery("SELECT b FROM books_with_copy_status b", books_with_copy_status.class).getResultList();
+        em.close();
+        return resultados;
+    }
 
+    public List<member_loans_history> obtenerHistorialPrestamosMiembro(Integer id) {
+        EntityManager em = getEntityManager();
+        List<member_loans_history> resultados = em.createQuery("SELECT m FROM member_loans_history m WHERE m.member_id = :id", member_loans_history.class).setParameter("id", id).getResultList();
+        em.close();
+        return resultados;
+    }
+    public List<overdue_loans_view> obtenerPrestamosVencidos() {
+        EntityManager em = getEntityManager();
+        List<overdue_loans_view> resultados = em.createQuery("SELECT o FROM overdue_loans_view o", overdue_loans_view.class).getResultList();
+        em.close();
+        return resultados;
+    }
 
-
-
+    public List<popular_genres_view> obtenerGenerosPopulares() {
+        EntityManager em = getEntityManager();
+        List<popular_genres_view> resultados = em.createQuery("SELECT p FROM popular_genres_view p", popular_genres_view.class).getResultList();
+        em.close();
+        return resultados;
+    }
 
 }
