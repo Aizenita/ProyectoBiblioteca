@@ -2,6 +2,8 @@ package org.example.libraryapp.controller;
 import javafx.animation.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -10,6 +12,8 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
+import java.io.IOException;
 
 public class MainController {
 
@@ -52,9 +56,14 @@ public class MainController {
             primaryStage.setX(event.getScreenX() - xOffset);
             primaryStage.setY(event.getScreenY() - yOffset);
         });
-
         // Create animations
-        createAnimations();
+    }
+    public void setupStage() {
+        primaryStage.setMinWidth(800); // Set the width as needed
+        primaryStage.setMinHeight(600); // Set the height as needed
+
+        Scene scene = primaryStage.getScene();
+        scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
     }
 
     private void createAnimations() {
@@ -102,12 +111,26 @@ public class MainController {
             mediaPlayer.play();
 
             // Close splash screen after delay (same logic as original class)
-            PauseTransition pause = new PauseTransition(Duration.seconds(5));
+            PauseTransition pause = new PauseTransition(Duration.seconds(10));
             pause.setOnFinished(e -> closeApp());
             pause.play();
         });
-    }
 
+        primaryStage.setOnHidden(event -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/home.fxml")); // Assuming home.fxml is your new FXML file
+                Parent root = loader.load();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+    public void postInitialize() {
+        createAnimations();
+    }
     private void closeApp() {
         primaryStage.close();
     }

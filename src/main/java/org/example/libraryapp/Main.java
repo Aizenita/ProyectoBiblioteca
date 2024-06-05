@@ -14,13 +14,18 @@ public class Main extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Main.fxml")); // Modify this line
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Main.fxml"));
         Parent root = loader.load();
 
-        MainController controller = loader.getController();
-        controller.setPrimaryStage(primaryStage);
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
 
-        primaryStage.setScene(new Scene(root));
+        MainController controller = loader.getController();
+        controller.setPrimaryStage(primaryStage); // Set primaryStage before initialize method is called
+        controller.setupStage(); // Set up the stage after primaryStage is set
+
         primaryStage.show();
+
+        controller.postInitialize();
     }
 }
