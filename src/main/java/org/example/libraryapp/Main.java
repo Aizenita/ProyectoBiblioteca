@@ -1,5 +1,7 @@
 package org.example.libraryapp;
 
+import javafx.scene.paint.Color;
+import javafx.stage.StageStyle;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,6 +21,9 @@ public class Main extends Application{
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
+
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
+        scene.setFill(Color.TRANSPARENT);
 
         MainController controller = loader.getController();
         controller.setPrimaryStage(primaryStage); // Set primaryStage before initialize method is called

@@ -55,7 +55,19 @@ public class BookController {
         em.close();
     }
 
+    public long getTotalBooks() {
+        EntityManager em = getEntityManager();
+        long totalBooks = (long) em.createQuery("SELECT COUNT(b) FROM Book b").getSingleResult();
+        em.close();
+        return totalBooks;
+    }
 
+    public long getTotalMembers() {
+        EntityManager em = getEntityManager();
+        long totalMembers = (long) em.createQuery("SELECT COUNT(m) FROM Member m").getSingleResult();
+        em.close();
+        return totalMembers;
+    }
 
     public void close() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("LibraryAppPU");

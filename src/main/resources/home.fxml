@@ -1,14 +1,261 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="Home"
-            prefHeight="400.0" prefWidth="600.0">
+<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="827.0" prefWidth="1320.0" styleClass="root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.libraryapp.controller.HomeController">
 
-</AnchorPane>
+    <children>
+
+        <VBox prefHeight="781.0" prefWidth="281.0">
+
+            <children>
+
+                <AnchorPane fx:id="side_ankerpane" prefHeight="827.0" prefWidth="281.0" styleClass="side_ankerpane" stylesheets="@style.css">
+
+                    <children>
+
+                        <Pane fx:id="inner_pane" layoutX="17.0" layoutY="27.0" prefHeight="78.0" prefWidth="248.0" style="-fx-background-color: #336699;" styleClass="inner_pane" stylesheets="@style.css">
+                     <children>
+                        <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@logo.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="84.0" layoutY="20.0" text="Alejandria" textFill="#ffff66">
+                           <font>
+                              <Font name="Yu Gothic UI Semibold" size="27.0" />
+                           </font>
+                        </Label>
+                     </children>
+
+                        </Pane>
+
+                        <!-- HOME -->
+                        <JFXButton fx:id="homeButton" layoutX="17.0" layoutY="141.0" onMouseClicked="#homeButtonAction" prefHeight="53.0" prefWidth="248.0" styleClass="btn_workbench" stylesheets="@style.css" text="Home" textFill="WHITE">
+
+                            <font>
+
+                                <Font name="Century Gothic Bold" size="13.0" />
+
+                            </font>
+
+                        </JFXButton>
+                        <!-- ADD NEW MEMBER -->
+                        <JFXButton fx:id="newMemberButton" layoutX="17.0" layoutY="211.0" onAction="#handleNewMemberButtonAction" prefHeight="53.0" prefWidth="248.0" styleClass="btn_workbench11" stylesheets="@style.css" text="Add new Member" textFill="#c6b6b6">
+
+                            <font>
+
+                                <Font name="Century Gothic Bold" size="13.0" />
+
+                            </font>
+
+                        </JFXButton>
+
+                        <JFXButton fx:id="btn_workbench11" layoutX="17.0" layoutY="279.0" prefHeight="53.0" prefWidth="248.0" styleClass="btn_workbench11" stylesheets="@style.css" text="Loan Book" textFill="#c6b6b6">
+
+                            <font>
+
+                                <Font name="Century Gothic Bold" size="13.0" />
+
+                            </font>
+
+                        </JFXButton>
+
+                        <JFXButton fx:id="btn_workbench12" layoutX="17.0" layoutY="347.0" prefHeight="53.0" prefWidth="248.0" styleClass="btn_workbench11" stylesheets="@style.css" text="Return Book" textFill="#c6b6b6">
+
+                            <font>
+
+                                <Font name="Century Gothic Bold" size="13.0" />
+
+                            </font>
+
+                        </JFXButton>
+
+                        <JFXButton fx:id="btn_workbench111" layoutX="17.0" layoutY="415.0" prefHeight="53.0" prefWidth="248.0" styleClass="btn_workbench11" stylesheets="@style.css" text="Delete member" textFill="WHITE">
+
+                            <font>
+
+                                <Font name="Century Gothic Bold" size="13.0" />
+
+                            </font>
+
+                        </JFXButton>
+
+                        <JFXButton fx:id="btn_workbench1111" layoutX="17.0" layoutY="484.0" prefHeight="53.0" prefWidth="248.0" styleClass="btn_workbench11" stylesheets="@style.css" text="Loans History" textFill="WHITE">
+
+                            <font>
+
+                                <Font name="Century Gothic Bold" size="13.0" />
+
+                            </font>
+
+                        </JFXButton>
+
+                    </children>
+
+                </AnchorPane>
+
+            </children>
+
+        </VBox>
+
+        <Pane prefHeight="781.0" prefWidth="1040.0">
+
+            <children>
+
+                <Label layoutX="44.0" layoutY="42.0" text="Alejandria" textFill="#ffff66">
+
+                    <font>
+
+                        <Font name="Yu Gothic UI Semibold" size="34.0" />
+
+                    </font>
+
+                </Label>
+
+                <Label layoutX="44.0" layoutY="92.0" text="Scientia locum non occupat" textFill="#ffff66">
+
+                    <font>
+
+                        <Font name="Yu Gothic UI Semibold" size="15.0" />
+
+                    </font>
+
+                </Label>
+
+                      <Pane fx:id="pane_1" layoutX="39.0" layoutY="168.0" prefHeight="234.0" prefWidth="146.0" style="-fx-background-color: #6699ff;" styleClass="pane_1" stylesheets="@style.css" />
+
+                <Label layoutX="44.0" layoutY="134.0" text="Most rented books of the week" textFill="#ffff66">
+
+                    <font>
+
+                        <Font name="Yu Gothic UI Semibold" size="15.0" />
+
+                    </font>
+
+                </Label>
+
+                <Pane fx:id="pane_11" layoutX="242.0" layoutY="168.0" prefHeight="234.0" prefWidth="146.0" styleClass="pane_2" stylesheets="@style.css" />
+
+                <Pane fx:id="pane_12" layoutX="441.0" layoutY="168.0" prefHeight="234.0" prefWidth="146.0" styleClass="pane_3" stylesheets="@style.css" />
+
+                <Pane fx:id="pane_111" layoutX="645.0" layoutY="168.0" prefHeight="234.0" prefWidth="146.0" styleClass="pane_4" stylesheets="@style.css" />
+
+                <Label layoutX="415.0" layoutY="425.0" text="Company" textFill="#9a9292">
+
+                    <font>
+
+                        <Font name="Century Gothic Bold" size="15.0" />
+
+                    </font>
+
+                </Label>
+
+                <Pane fx:id="pane_13" layoutX="39.0" layoutY="454.0" prefHeight="78.0" prefWidth="307.0" style="-fx-background-color: #ffff66;" stylesheets="@style.css">
+               <styleClass>
+                  <String fx:value="pane_11" />
+                  <String fx:value="pane_users" />
+               </styleClass>
+               <children>
+                  <Label fx:id="totalUsersLabel" layoutX="29.0" layoutY="22.0" text="Label" textFill="#336699">
+                     <font>
+                        <Font name="Yu Gothic UI Semibold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="144.0" layoutY="24.0" text="Total Members" textFill="#336699">
+                     <font>
+                        <Font name="Yu Gothic UI Semibold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+
+                </Pane>
+
+                <Pane fx:id="pane_131" layoutX="39.0" layoutY="546.0" prefHeight="78.0" prefWidth="307.0" style="-fx-background-color: #ffff66;" stylesheets="@style.css">
+
+                    <children>
+
+                        <Label fx:id="totalCopiesLabel" layoutX="29.0" layoutY="22.0" text="Label" textFill="#336699">
+
+                            <font>
+
+                                <Font name="Yu Gothic UI Semibold" size="24.0" />
+
+                            </font>
+
+                        </Label>
+                  <Label layoutX="146.0" layoutY="25.0" text="Unique Books" textFill="#336699">
+                     <font>
+                        <Font name="Yu Gothic UI Semibold" size="20.0" />
+                     </font>
+                  </Label>
+
+                    </children>
+               <styleClass>
+                  <String fx:value="pane_11" />
+                  <String fx:value="pane_books" />
+               </styleClass>
+
+                </Pane>
+
+                <Pane fx:id="pane_132" layoutX="405.0" layoutY="454.0" prefHeight="262.0" prefWidth="596.0" style="-fx-background-image: url('file:src/main/resources/alejandria.jpeg'); -fx-background-size: cover;" styleClass="pane_11" stylesheets="@style.css">
+
+                    <children>
+                  <Label layoutX="28.0" layoutY="31.0" style="-fx-wrap-text: true; -fx-max-width: 270px;" text="Welcome to Alexandria Library, where knowledge knows no bounds. Our library stands as a beacon of enlightenment, dedicated to fostering the pursuit of wisdom and discovery. Our motto, &quot;Scientia locum non occupat,&quot; embodies our belief that knowledge transcends physical space, continuously expanding and enriching our understanding of the world.">
+                     <font>
+                        <Font name="Yu Gothic UI Semibold" size="14.0" />
+                     </font>
+                     <textFill>
+                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="1.0" green="1.0" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </RadialGradient>
+                     </textFill>
+                  </Label>
+
+                    </children>
+
+                </Pane>
+            <Pane fx:id="pane_14" layoutX="840.0" layoutY="168.0" prefHeight="234.0" prefWidth="146.0" style="-fx-background-color: #6699ff;" styleClass="pane_5" stylesheets="@style.css" />
+            <Pane fx:id="pane_1311" layoutX="39.0" layoutY="638.0" prefHeight="78.0" prefWidth="307.0" style="-fx-background-color: #ffff66;" stylesheets="@style.css">
+               <children>
+                  <Label fx:id="totalBooksLabel" layoutX="29.0" layoutY="22.0" text="Label" textFill="#336699">
+                     <font>
+                        <Font name="Yu Gothic UI Semibold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="146.0" layoutY="25.0" text="Total Books" textFill="#336699">
+                     <font>
+                        <Font name="Yu Gothic UI Semibold" size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="pane_11" />
+                  <String fx:value="pane_books" />
+               </styleClass>
+            </Pane>
+
+            </children>
+
+        </Pane>
+
+    </children>
+
+</HBox>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.libraryapp.controller.NewMemberController">
+
+    <children>
+
+        <VBox prefHeight="781.0" prefWidth="281.0">
+
+            <children>
+
+                <AnchorPane fx:id="side_ankerpane" prefHeight="827.0" prefWidth="281.0" styleClass="side_ankerpane" stylesheets="@style.css">
+
+                    <children>
+
+                        <Pane fx:id="inner_pane" layoutX="17.0" layoutY="27.0" prefHeight="78.0" prefWidth="248.0" style="-fx-background-color: #336699;" styleClass="inner_pane" stylesheets="@style.css">
+                            <children>
+                                <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@logo.png" />
+                                    </image>
+                                </ImageView>
+                                <Label layoutX="84.0" layoutY="20.0" text="Alejandria" textFill="#ffff66">
+                                    <font>
+                                        <Font name="Yu Gothic UI Semibold" size="27.0" />
+                                    </font>
+                                </Label>
+                            </children>
+
+                        </Pane>
+                        <!-- HOME -->
+                        <JFXButton fx:id="homeButton" layoutX="17.0" layoutY="141.0" onMouseClicked="#homeButtonAction" prefHeight="53.0" prefWidth="248.0" styleClass="btn_workbench" stylesheets="@style.css" text="Home" textFill="WHITE">
+
+                            <font>
+
+                                <Font name="Century Gothic Bold" size="13.0" />
+
+                            </font>
+
+                        </JFXButton>
+                        <!-- ADD NEW MEMBER -->
+                        <JFXButton fx:id="newMemberButton" layoutX="17.0" layoutY="211.0" onAction="#handleNewMemberButtonAction" prefHeight="53.0" prefWidth="248.0" styleClass="btn_workbench11" stylesheets="@style.css" text="Add new Member" textFill="#c6b6b6">
+
+                            <font>
+
+                                <Font name="Century Gothic Bold" size="13.0" />
+
+                            </font>
+
+                        </JFXButton>
+
+                        <JFXButton fx:id="btn_workbench11" layoutX="17.0" layoutY="279.0" prefHeight="53.0" prefWidth="248.0" styleClass="btn_workbench11" stylesheets="@style.css" text="Loan Book" textFill="#c6b6b6">
+
+                            <font>
+
+                                <Font name="Century Gothic Bold" size="13.0" />
+
+                            </font>
+
+                        </JFXButton>
+
+                        <JFXButton fx:id="btn_workbench12" layoutX="17.0" layoutY="347.0" prefHeight="53.0" prefWidth="248.0" styleClass="btn_workbench11" stylesheets="@style.css" text="Return Book" textFill="#c6b6b6">
+
+                            <font>
+
+                                <Font name="Century Gothic Bold" size="13.0" />
+
+                            </font>
+
+                        </JFXButton>
+
+                        <JFXButton fx:id="btn_workbench111" layoutX="17.0" layoutY="415.0" prefHeight="53.0" prefWidth="248.0" styleClass="btn_workbench11" stylesheets="@style.css" text="Delete member" textFill="WHITE">
+
+                            <font>
+
+                                <Font name="Century Gothic Bold" size="13.0" />
+
+                            </font>
+
+                        </JFXButton>
+
+                        <JFXButton fx:id="btn_workbench1111" layoutX="17.0" layoutY="484.0" prefHeight="53.0" prefWidth="248.0" styleClass="btn_workbench11" stylesheets="@style.css" text="Loans History" textFill="WHITE">
+
+                            <font>
+
+                                <Font name="Century Gothic Bold" size="13.0" />
+
+                            </font>
+
+                        </JFXButton>
+
+                    </children>
+
+                </AnchorPane>
+
+            </children>
+
+        </VBox>
+
+    </children>
+
+</HBox>

@@ -59,11 +59,10 @@ public class MainController {
         // Create animations
     }
     public void setupStage() {
-        primaryStage.setMinWidth(800); // Set the width as needed
-        primaryStage.setMinHeight(600); // Set the height as needed
-
+        primaryStage.setMinWidth(1280); // Set the width as needed
+        primaryStage.setMinHeight(720); // Set the height as needed
         Scene scene = primaryStage.getScene();
-        scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/estilos.css").toExternalForm());
     }
 
     private void createAnimations() {
@@ -111,7 +110,7 @@ public class MainController {
             mediaPlayer.play();
 
             // Close splash screen after delay (same logic as original class)
-            PauseTransition pause = new PauseTransition(Duration.seconds(10));
+            PauseTransition pause = new PauseTransition(Duration.seconds(5));
             pause.setOnFinished(e -> closeApp());
             pause.play();
         });

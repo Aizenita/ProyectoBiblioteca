@@ -48,6 +48,13 @@ public class BookCopyController {
         em.close();
     }
 
+    public long getTotalCopy() {
+        EntityManager em = getEntityManager();
+        long totalBooks = (long) em.createQuery("SELECT COUNT(b) FROM BookCopy b").getSingleResult();
+        em.close();
+        return totalBooks;
+    }
+
     public void close() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("LibraryAppPU");
         emf.close();
