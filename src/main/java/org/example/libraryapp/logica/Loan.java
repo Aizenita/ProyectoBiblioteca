@@ -24,6 +24,7 @@ public class Loan {
     @ManyToOne
     @JoinColumn(name = "book_copy_id")
     private BookCopy bookCopy;
+
     // Getters and Setters
     public Integer getLoan_id() {
         return loan_id;
@@ -68,3 +69,18 @@ public class Loan {
     public Book getBook() {
         return book;
     }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public BookCopy getBookCopy() {
+        return bookCopy;
+    }
+
+    public void setBookCopy(BookCopy bookCopy) {
+        this.bookCopy = bookCopy;
+    }
+
+
+}
