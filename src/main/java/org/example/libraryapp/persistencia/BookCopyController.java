@@ -2,9 +2,7 @@ package org.example.libraryapp.persistencia;
 
 import org.example.libraryapp.logica.BookCopy;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 
 public class BookCopyController {
 
@@ -58,6 +56,20 @@ public class BookCopyController {
     public void close() {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("LibraryAppPU");
         emf.close();
+    }
+
+    public Integer getAvailableCopyId(Integer bookId) {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createQuery("SELECT c.copy_id FROM BookCopy c WHERE c.book.book_id = :bookId AND c.status = 'Available'", Integer.class);
+            query.setParameter("bookId", bookId);
+            query.setMaxResults(1);
+            return (Integer) query.getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        } finally {
+            em.close();
+        }
     }
 
 }

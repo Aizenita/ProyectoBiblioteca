@@ -126,7 +126,7 @@ public class HomeController implements IController{
 
     @Override
     public void loanBookButtonAction(MouseEvent event) {
-        loadContentRoot("/loansHistory.fxml");
+        loadContentRoot("/loan.fxml");
     }
 
     @Override

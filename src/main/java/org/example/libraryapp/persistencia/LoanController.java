@@ -1,12 +1,18 @@
 package org.example.libraryapp.persistencia;
 
+import javafx.scene.control.Alert;
+import org.example.libraryapp.logica.Book;
+import org.example.libraryapp.logica.BookCopy;
 import org.example.libraryapp.logica.Loan;
+import org.example.libraryapp.logica.Member;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class LoanController {
@@ -69,5 +75,36 @@ public class LoanController {
         em.close();
     }
 }
+
+    public void createNewLoan(Integer memberId, Integer bookId, Integer copyId) {
+        Loan loan = new Loan();
+        BookCopyController bookCopyController = new BookCopyController();
+        MemberController memberController = new MemberController();
+        BookController bookController = new BookController(); // Asegúrate de tener una clase BookController
+
+        BookCopy bookCopy = bookCopyController.findBookCopy(copyId);
+        Member member = memberController.findMember(memberId);
+        Book book = bookController.findBook(bookId); // Encuentra el Book usando el bookId
+
+        // Establece el Book en el BookCopy
+        bookCopy.setBook(book);
+        loan.setBook(book);
+        loan.setBookCopy(bookCopy);
+        loan.setMember(member);
+        loan.setLoan_date(new Date());
+        Calendar c = Calendar.getInstance();
+        c.setTime(new Date());
+        c.add(Calendar.DATE, 7);
+        loan.setReturn_date(c.getTime());
+        loan.setStatus("Pending");
+        createLoan(loan);
+
+        // Mostrar un mensaje de éxito
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Préstamo exitoso");
+        alert.setHeaderText(null);
+        alert.setContentText("El préstamo se ha realizado con éxito.");
+        alert.showAndWait();
+    }
 
 }
