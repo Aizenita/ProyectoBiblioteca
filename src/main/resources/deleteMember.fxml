@@ -101,6 +101,19 @@
             </children>
 
         </VBox>
+      <Pane prefHeight="825.0" prefWidth="1035.0">
+          <children>
+              <Label layoutX="430.0" layoutY="33.0" text="Delete Member" textFill="#ffff66">
+                  <font>
+                      <Font name="Yu Gothic Bold" size="20.0" />
+                  </font>
+              </Label>
+              <TextField fx:id="memberIdField" layoutX="405.0" layoutY="96.0" prefHeight="25.0" prefWidth="200.0" promptText="Member ID" />
+              <TextField fx:id="nameField" layoutX="405.0" layoutY="146.0" prefHeight="25.0" prefWidth="200.0" promptText="Name" />
+              <TextField fx:id="surnameField" layoutX="405.0" layoutY="196.0" prefHeight="25.0" prefWidth="200.0" promptText="Surname" />
+              <Button fx:id="deleteButton" layoutX="456.0" layoutY="253.0" mnemonicParsing="false" onAction="#handleDeleteMemberAction" text="Delete Member" />
+          </children>
+      </Pane>
 
     </children>
 

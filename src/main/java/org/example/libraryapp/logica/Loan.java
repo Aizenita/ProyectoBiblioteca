@@ -68,21 +68,3 @@ public class Loan {
     public Book getBook() {
         return book;
     }
-
-    public void setBook(Book book) {
-        this.book = book;
-    }
-    public BookCopy getBookCopy() {
-        return bookCopy;
-    }
-
-    public void setBookCopy(BookCopy bookCopy) {
-        this.bookCopy = bookCopy;
-    }
-
-}
-
-
-
-
-

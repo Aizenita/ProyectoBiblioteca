@@ -1,5 +1,6 @@
 package org.example.libraryapp.controller;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -14,6 +15,8 @@ import javafx.scene.layout.HBox;
 import com.jfoenix.controls.JFXButton;
 import org.example.libraryapp.logica.Loan;
 import org.example.libraryapp.persistencia.LoanController;
+import org.example.libraryapp.logica.Book;
+
 
 import java.io.IOException;
 import java.sql.Date;
@@ -35,47 +38,32 @@ public class LoansHistoryController implements IController{
 
     private static final int LOANS_PER_PAGE = 50;
 
-
-
     public void loadNextPage() {
         currentPage++;
-        LoanController loanController = new LoanController();
-        List<Loan> loans = loanController.getAllLoans(currentPage, LOANS_PER_PAGE);
-
-        ObservableList<Loan> loansObservableList = FXCollections.observableArrayList(loans);
-        loansTable.setItems(loansObservableList);
+        loadData();
     }
 
-    public void initialize() {
-        LoanController loanController = new LoanController();
-        List<Loan> loans = loanController.getAllLoans(currentPage, LOANS_PER_PAGE);
-
+public void initialize() {
         // Crear las columnas
-        TableColumn<Loan, String> memberColumn = new TableColumn<>("Member");
-        TableColumn<Loan, String> bookColumn = new TableColumn<>("Book");
-        TableColumn<Loan, Date> loanDateColumn = new TableColumn<>("Loan Date");
-        TableColumn<Loan, Date> returnDateColumn = new TableColumn<>("Return Date");
-        TableColumn<Loan, String> statusColumn = new TableColumn<>("Status");
+        TableColumn<Loan, Integer> column1 = new TableColumn<>("Loan ID");
+        column1.setCellValueFactory(new PropertyValueFactory<>("loan_id"));
 
-        // Configurar las columnas
-        memberColumn.setCellValueFactory(new PropertyValueFactory<>("member"));
-        bookColumn.setCellValueFactory(new PropertyValueFactory<>("book"));
-        loanDateColumn.setCellValueFactory(new PropertyValueFactory<>("loan_date"));
-        returnDateColumn.setCellValueFactory(new PropertyValueFactory<>("return_date"));
-        statusColumn.setCellValueFactory(new PropertyValueFactory<>("status"));
+        TableColumn<Loan, Date> column2 = new TableColumn<>("Loan Date");
+        column2.setCellValueFactory(new PropertyValueFactory<>("loan_date"));
 
-        // Agregar las columnas a la tabla
-        loansTable.getColumns().add(memberColumn);
-        loansTable.getColumns().add(bookColumn);
-        loansTable.getColumns().add(loanDateColumn);
-        loansTable.getColumns().add(returnDateColumn);
-        loansTable.getColumns().add(statusColumn);
+        TableColumn<Loan, Date> column3 = new TableColumn<>("Return Date");
+        column3.setCellValueFactory(new PropertyValueFactory<>("return_date"));
 
-        // Agregar los datos a la tabla
-        ObservableList<Loan> loansObservableList = FXCollections.observableArrayList(loans);
-        loansTable.setItems(loansObservableList);
+        TableColumn<Loan, String> column4 = new TableColumn<>("Status");
+        column4.setCellValueFactory(new PropertyValueFactory<>("status"));
+
+        TableColumn<Loan, String> column5 = new TableColumn<>("Book Title");
+        column5.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getBook().getTitle()));
+
+        loansTable.getColumns().setAll(column1, column2, column3, column4, column5);
+        // Cargar los datos
+         loadData();
     }
-
     public void loadData() {
         LoanController loanController = new LoanController();
         List<Loan> loans = loanController.getAllLoans(currentPage, LOANS_PER_PAGE);
@@ -84,6 +72,7 @@ public class LoansHistoryController implements IController{
         ObservableList<Loan> loansObservableList = FXCollections.observableArrayList(loans);
         loansTable.setItems(loansObservableList);
     }
+
 
     private void loadContentRoot(String fxmlFile) {
         try {
@@ -117,25 +106,25 @@ public class LoansHistoryController implements IController{
 
     @Override
     public void loanBookButtonAction(MouseEvent event) {
-        loadContentRoot("loansHistory.fxml");
+        loadContentRoot("/loan.fxml");
     }
 
     @Override
     @FXML
     public void returnBookButtonAction(MouseEvent event) {
-        loadContentRoot("returnBook.fxml");
+        loadContentRoot("/returnBook.fxml");
     }
 
     @Override
     @FXML
     public void deleteMemberButtonAction(MouseEvent event) {
-        loadContentRoot("deleteMember.fxml");
+        loadContentRoot("/deleteMember.fxml");
     }
 
     @Override
     @FXML
     public void loansHistoryButtonAction(MouseEvent event) {
-        loadContentRoot("loansHistory.fxml");
+        loadContentRoot("/loansHistory.fxml");
     }
 
 

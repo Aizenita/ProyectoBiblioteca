@@ -42,24 +42,24 @@ public class ReturnBookController implements IController{
 
     @Override
     public void loanBookButtonAction(MouseEvent event) {
-        loadContentRoot("loansHistory.fxml");
+        loadContentRoot("/loan.fxml");
     }
 
     @Override
     @FXML
     public void returnBookButtonAction(MouseEvent event) {
-        loadContentRoot("returnBook.fxml");
+        loadContentRoot("/returnBook.fxml");
     }
 
     @Override
     @FXML
     public void deleteMemberButtonAction(MouseEvent event) {
-        loadContentRoot("deleteMember.fxml");
+        loadContentRoot("/deleteMember.fxml");
     }
 
     @Override
     @FXML
         public void loansHistoryButtonAction(MouseEvent event) {
-        loadContentRoot("loansHistory.fxml");
+        loadContentRoot("/loansHistory.fxml");
     }
 }
