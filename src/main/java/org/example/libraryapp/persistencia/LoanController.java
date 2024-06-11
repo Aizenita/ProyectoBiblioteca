@@ -5,6 +5,9 @@ import org.example.libraryapp.logica.Loan;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaQuery;
+import java.util.List;
 
 public class LoanController {
 
@@ -52,5 +55,19 @@ public class LoanController {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("LibraryAppPU");
         emf.close();
     }
+
+  public List<Loan> getAllLoans(int pageNumber, int loansPerPage) {
+    EntityManager em = getEntityManager();
+    try {
+        CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+        cq.select(cq.from(Loan.class));
+        Query q = em.createQuery(cq);
+        q.setMaxResults(loansPerPage);
+        q.setFirstResult((pageNumber - 1) * loansPerPage);
+        return q.getResultList();
+    } finally {
+        em.close();
+    }
+}
 
 }

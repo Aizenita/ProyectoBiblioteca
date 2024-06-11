@@ -12,6 +12,9 @@ public interface IController {
     public void homeButtonAction(MouseEvent event);
 
     @FXML
+    public void loanBookButtonAction(MouseEvent event);
+
+    @FXML
     public void returnBookButtonAction(MouseEvent event);
 
     @FXML

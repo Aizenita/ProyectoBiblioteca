@@ -7,6 +7,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 
 <HBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="827.0" prefWidth="1320.0" styleClass="root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.libraryapp.controller.HomeController">
 
@@ -47,7 +49,7 @@
 
                         </JFXButton>
                         <!-- ADD NEW MEMBER -->
-                        <JFXButton fx:id="newMemberButton" layoutX="17.0" layoutY="211.0" onAction="#handleNewMemberButtonAction" prefHeight="53.0" prefWidth="248.0" styleClass="btn_workbench11" stylesheets="@style.css" text="Add new Member" textFill="#c6b6b6">
+                        <JFXButton fx:id="newMemberButton" layoutX="17.0" layoutY="211.0" onMouseClicked="#handleNewMemberButtonAction" prefHeight="53.0" prefWidth="248.0" styleClass="btn_workbench11" stylesheets="@style.css" text="Add new Member" textFill="#c6b6b6">
 
                             <font>
 
@@ -57,7 +59,7 @@
 
                         </JFXButton>
 
-                        <JFXButton fx:id="btn_workbench11" layoutX="17.0" layoutY="279.0" prefHeight="53.0" prefWidth="248.0" styleClass="btn_workbench11" stylesheets="@style.css" text="Loan Book" textFill="#c6b6b6">
+                        <JFXButton fx:id="btn_workbench11" layoutX="17.0" layoutY="279.0" onMouseClicked="#loanBookButtonAction" prefHeight="53.0" prefWidth="248.0" styleClass="btn_workbench11" stylesheets="@style.css" text="Loan Book" textFill="#c6b6b6">
 
                             <font>
 
@@ -67,7 +69,7 @@
 
                         </JFXButton>
 
-                        <JFXButton fx:id="btn_workbench12" layoutX="17.0" layoutY="347.0" prefHeight="53.0" prefWidth="248.0" styleClass="btn_workbench11" stylesheets="@style.css" text="Return Book" textFill="#c6b6b6">
+                        <JFXButton fx:id="btn_workbench12" layoutX="17.0" layoutY="347.0" onMouseClicked="#returnBookButtonAction" prefHeight="53.0" prefWidth="248.0" styleClass="btn_workbench11" stylesheets="@style.css" text="Return Book" textFill="#c6b6b6">
 
                             <font>
 
@@ -77,7 +79,7 @@
 
                         </JFXButton>
 
-                        <JFXButton fx:id="btn_workbench111" layoutX="17.0" layoutY="415.0" prefHeight="53.0" prefWidth="248.0" styleClass="btn_workbench11" stylesheets="@style.css" text="Delete member" textFill="WHITE">
+                        <JFXButton fx:id="btn_workbench111" layoutX="17.0" layoutY="415.0" onMouseClicked="#deleteMemberButtonAction" prefHeight="53.0" prefWidth="248.0" styleClass="btn_workbench11" stylesheets="@style.css" text="Delete member" textFill="WHITE">
 
                             <font>
 
@@ -87,7 +89,7 @@
 
                         </JFXButton>
 
-                        <JFXButton fx:id="btn_workbench1111" layoutX="17.0" layoutY="484.0" prefHeight="53.0" prefWidth="248.0" styleClass="btn_workbench11" stylesheets="@style.css" text="Loans History" textFill="WHITE">
+                        <JFXButton fx:id="btn_workbench1111" layoutX="17.0" layoutY="484.0" onMouseClicked="#loansHistoryButtonAction" prefHeight="53.0" prefWidth="248.0" styleClass="btn_workbench11" stylesheets="@style.css" text="Loans History" textFill="WHITE">
 
                             <font>
 
@@ -105,7 +107,7 @@
 
         </VBox>
 
-        <Pane prefHeight="781.0" prefWidth="1040.0">
+        <Pane prefHeight="825.0" prefWidth="1035.0">
 
             <children>
 

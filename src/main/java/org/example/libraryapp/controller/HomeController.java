@@ -111,8 +111,9 @@ public class HomeController implements IController{
         BookCopyController bookController = new BookCopyController();
         return (int) bookController.getTotalCopy();
     }
-    @FXML
+
     @Override
+    @FXML
     public void handleNewMemberButtonAction(MouseEvent event) {
         loadContentRoot("/newMemberForm.fxml");
     }
@@ -124,20 +125,25 @@ public class HomeController implements IController{
     }
 
     @Override
+    public void loanBookButtonAction(MouseEvent event) {
+        loadContentRoot("/loansHistory.fxml");
+    }
+
+    @Override
     @FXML
     public void returnBookButtonAction(MouseEvent event) {
-
+        loadContentRoot("/returnBook.fxml");
     }
 
     @Override
     @FXML
     public void deleteMemberButtonAction(MouseEvent event) {
-
+        loadContentRoot("/deleteMember.fxml");
     }
 
     @Override
     @FXML
     public void loansHistoryButtonAction(MouseEvent event) {
-
+        loadContentRoot("/loansHistory.fxml");
     }
 }

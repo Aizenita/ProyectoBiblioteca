@@ -9,18 +9,32 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
+import org.example.libraryapp.logica.Member;
 import org.example.libraryapp.persistencia.BookController;
 import org.example.libraryapp.persistencia.BookCopyController;
+import org.example.libraryapp.persistencia.MemberController;
 
 import java.io.IOException;
 import java.util.Objects;
 
 public class NewMemberController implements IController{
+
+    @FXML
+    private TextField nameField;
+    @FXML
+    private TextField surnameField;
+    @FXML
+    private TextField addressField;
+    @FXML
+    private TextField phoneNumberField;
+    @FXML
+    private TextField emailField;
 
     @FXML
     private HBox root;
@@ -34,28 +48,42 @@ public class NewMemberController implements IController{
     }
 
     @FXML
-    public void handleNewMemberButtonAction(MouseEvent event) {
-        loadContentRoot("/newMemberForm.fxml");
+    public void handleResetButtonAction(MouseEvent event) {
+        // Limpiar los campos del formulario
+        nameField.clear();
+        surnameField.clear();
+        addressField.clear();
+        phoneNumberField.clear();
+        emailField.clear();
     }
 
     @FXML
-    public void homeButtonAction(MouseEvent event) {
-        loadContentRoot("/home.fxml");
-    }
+    public void handleSubmitButtonAction(MouseEvent event) {
+        // Crear un nuevo objeto Member
+        Member newMember = new Member();
+        newMember.setName(nameField.getText());
+        newMember.setSurname(surnameField.getText());
+        newMember.setAddress(addressField.getText());
+        newMember.setPhone_number(phoneNumberField.getText());
+        newMember.setEmail(emailField.getText());
 
-    @Override
-    public void returnBookButtonAction(MouseEvent event) {
+        // Crear un nuevo MemberController y usarlo para guardar el nuevo miembro
+        MemberController memberController = new MemberController();
+        memberController.createMember(newMember);
 
-    }
+        // Mostrar un mensaje de éxito
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Success");
+        alert.setHeaderText(null);
+        alert.setContentText("New member has been added successfully!");
+        alert.showAndWait();
 
-    @Override
-    public void deleteMemberButtonAction(MouseEvent event) {
-
-    }
-
-    @Override
-    public void loansHistoryButtonAction(MouseEvent event) {
-
+        // Limpiar los campos del formulario
+        nameField.clear();
+        surnameField.clear();
+        addressField.clear();
+        phoneNumberField.clear();
+        emailField.clear();
     }
 
     private void loadContentRoot(String fxmlFile) {
@@ -74,5 +102,41 @@ public class NewMemberController implements IController{
     private void closeApp() {
         Stage stage = (Stage) root.getScene().getWindow();
         stage.close();
+    }
+
+
+    @Override
+    @FXML
+    public void handleNewMemberButtonAction(MouseEvent event) {
+        loadContentRoot("/newMemberForm.fxml");
+    }
+
+    @Override
+    @FXML
+    public void homeButtonAction(MouseEvent event) {
+        loadContentRoot("/home.fxml");
+    }
+
+    @Override
+    public void loanBookButtonAction(MouseEvent event) {
+        loadContentRoot("loansHistory.fxml");
+    }
+
+    @Override
+    @FXML
+    public void returnBookButtonAction(MouseEvent event) {
+        loadContentRoot("returnBook.fxml");
+    }
+
+    @Override
+    @FXML
+    public void deleteMemberButtonAction(MouseEvent event) {
+        loadContentRoot("deleteMember.fxml");
+    }
+
+    @Override
+    @FXML
+    public void loansHistoryButtonAction(MouseEvent event) {
+        loadContentRoot("loansHistory.fxml");
     }
 }

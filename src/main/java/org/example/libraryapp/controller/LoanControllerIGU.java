@@ -4,23 +4,15 @@ import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.event.ActionEvent;
-import org.example.libraryapp.persistencia.BookController;
-import org.example.libraryapp.persistencia.BookCopyController;
 
 import java.io.IOException;
 import java.util.Objects;
 
-public class LoanController implements IController{
+public class LoanControllerIGU implements IController{
 
     @FXML
     private HBox root;
@@ -44,16 +36,26 @@ public class LoanController implements IController{
     }
 
     @Override
+    @FXML
+    public void loanBookButtonAction(MouseEvent event) {
+        loadContentRoot("loan.fxml");
+    }
+
+    @Override
+    @FXML
     public void returnBookButtonAction(MouseEvent event) {
+        loadContentRoot("returnBook.fxml");
 
     }
 
     @Override
+    @FXML
     public void deleteMemberButtonAction(MouseEvent event) {
-
+        loadContentRoot("deleteMember.fxml");
     }
 
     @Override
+    @FXML
     public void loansHistoryButtonAction(MouseEvent event) {
 
     }
