@@ -101,7 +101,13 @@
             </children>
 
         </VBox>
-
+      <Pane prefHeight="825.0" prefWidth="1035.0">
+          <children>
+              <Label layoutX="198.0" layoutY="228.0" text="Enter Loan ID:" />
+              <TextField fx:id="loanIdField" layoutX="198.0" layoutY="271.0" />
+              <Button layoutX="214.0" layoutY="360.0" onAction="#handleReturnBookAction" text="Return Book"/>
+          </children>
+      </Pane>
     </children>
 
 </HBox>

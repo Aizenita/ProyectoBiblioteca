@@ -29,6 +29,8 @@ public class Book {
     @OneToMany(mappedBy = "book")
     private Set<Transaction> transactions;
 
+    // Getters and Setters
+
     public Integer getBook_id() {
         return book_id;
     }
@@ -100,4 +102,6 @@ public class Book {
     public void setTransactions(Set<Transaction> transactions) {
         this.transactions = transactions;
     }
+
+
 }

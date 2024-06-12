@@ -38,20 +38,20 @@ public class LoanControllerIGU implements IController{
     @Override
     @FXML
     public void loanBookButtonAction(MouseEvent event) {
-        loadContentRoot("/loan.fxml");
+        loadContentRoot("loan.fxml");
     }
 
     @Override
     @FXML
     public void returnBookButtonAction(MouseEvent event) {
-        loadContentRoot("/returnBook.fxml");
+        loadContentRoot("returnBook.fxml");
 
     }
 
     @Override
     @FXML
     public void deleteMemberButtonAction(MouseEvent event) {
-        loadContentRoot("/deleteMember.fxml");
+        loadContentRoot("deleteMember.fxml");
     }
 
     @Override
